@@ -57,7 +57,7 @@ window.onload = () => {
 
 
             if (bds.length == 0) //si no hay nada guardado hago una nueva BD
-                promesa = NewBD();
+                promesa = BDTest();
             else {
                 //si hay pues las añado
                 promesa = new Promise((okey, error) => {
@@ -86,6 +86,17 @@ window.onload = () => {
 window.onunload = () => {
 
     SaveAll(false);
+}
+
+function BDTest(){
+const URLTEST="Javascript/data.sqlite";
+    return fetch(URLTEST).then((r)=>r.blob()).then((data)=>{
+        var bd=new BD();
+        return bd.Init.then(()=>{bd.Import(data);return bd;});
+        
+    
+    }).then((bd)=>AddToList(bd)).then(()=>console.log('Init BD Test'));
+
 }
 
 function UpdateSelectedBD() {
