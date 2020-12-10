@@ -89,7 +89,7 @@ window.onunload = () => {
 }
 
 function BDTest(){
-const URLTEST="Javascript/data.sqlite";
+const URLTEST="data.sqlite";
     return fetch(URLTEST).then((r)=>r.blob()).then((data)=>{
         var bd=new BD();
         return bd.Init.then(()=>{bd.Import(data);return bd;});
