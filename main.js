@@ -92,6 +92,7 @@ function BDTest(){
 const URLTEST="data.sqlite";
     return fetch(URLTEST).then((r)=>r.blob()).then((data)=>{
         var bd=new BD();
+        bd.Name="Test";
         return bd.Init.then(()=>{bd.Import(data);return bd;});
         
     
